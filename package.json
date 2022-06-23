@@ -1,0 +1,29 @@
+{
+  "name": "course-hugo-scss",
+  "version": "1.0.0",
+  "description": "Skillshare course - add dynamic contact forms to a Hugo static site",
+  "scripts": {
+    "dev": "hugo server --gc --disableFastRender ",
+    "dev:preview": "npm run dev -- --buildDrafts --buildFuture",
+    "build": "hugo -v --gc --minify --cleanDestinationDir",
+    "renderToDisk": "hugo server --gc --disableFastRender --renderToDisk --cleanDestinationDir ",
+    "renderToDisk:preview": "npm run renderToDisk -- --buildDrafts --buildFuture ",
+    "renderToDisk:production": "npm run renderToDisk -- --minify --environment production",
+    "npm-check": "npx npm-check -u",
+    "hugo version": "hugo version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/future-wd/course-hugo-contact-form.git"
+  },
+  "author": "Sean Emerson",
+  "license": "ISC",
+  "homepage": "https://github.com/future-wd/course-hugo-contact-form#readme",
+  "dependencies": {
+    "autoprefixer": "^10.4.0",
+    "bootstrap": "^5.1.3",
+    "npm-check": "^5.9.2",
+    "postcss": "^8.4.4",
+    "postcss-cli": "^9.0.2"
+  }
+}

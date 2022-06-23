@@ -1,0 +1,15 @@
+# for uploading public folder contents to local http server
+baseURL: http://localhost/
+# site title
+title: Hugo Contact Form Course
+# alternate copyright company text
+copyright: Sean Emerson
+# controls number of pages displayed on list pages
+paginate: 5
+# controls the summary length on list pages
+summaryLength: 7
+# allow Hugo to render HTML which is inside markdown files
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
