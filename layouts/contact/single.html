@@ -6,20 +6,25 @@
         {{ partial "title" . }}
         {{ .Content }}
         <form action="#">
-          <div class="mb-3">
-            <input type="text" name="name" class="form-control" id="inputName" placeholder="Name" aria-label="Name">
+          <div class="form-floating mb-3">
+            <input type="text" name="name" class="form-control" id="inputName" placeholder="Name"
+              aria-labelledby="inputNameLabel">
+            <label for="inputName" id="inputNameLabel">Name</label>
           </div>
-          <div class="mb-3">
+          <div class="form-floating mb-3">
             <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email"
-              aria-label="Email">
+              aria-labelledby="inputEmailLabel">
+            <label for="inputEmail" id="inputEmailLabel">Email</label>
           </div>
-          <div class="mb-3">
+          <div class="form-floating mb-3">
             <input type="text" name="subject" class="form-control" id="inputSubject" placeholder="Subject"
-              aria-label="Subject">
+              aria-labelledby="inputSubjectLabel">
+            <label for="inputSubject" id="inputSubjectLabel">Subject</label>
           </div>
-          <div class="mb-3">
-            <textarea name="message" class="form-control" rows="4" id="inputMessage" placeholder="Message"
-              aria-label="Message"></textarea>
+          <div class="form-floating mb-3">
+            <textarea name="message" class="form-control" id="inputMessage" placeholder="Message"
+              aria-labelledby="inputMessageLabel"></textarea>
+            <label for="inputMessage" id="inputMessageLabel">Message</label>
           </div>
         </form>
       </div>
