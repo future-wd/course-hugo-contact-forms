@@ -20,7 +20,6 @@ function onSubmit(token) {
     // add class to display validation status of fields
     form.classList.add('was-validated')
     // if form has passed validation
-    // stop default submit behaviour
     if (form.checkValidity()) {
       // call recaptcha for check and submission
       grecaptcha.execute();
