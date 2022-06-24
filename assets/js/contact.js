@@ -3,7 +3,7 @@
 var form = document.getElementById('js-contactForm');
 
 // called by recaptcha, submits the form (but not via browser default)
-window.onSubmit = () => {
+window.submitForm = () => {
   form.submit();
 }
 
