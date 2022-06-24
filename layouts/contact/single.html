@@ -5,31 +5,35 @@
       <div class="col-md-9 col-lg-6">
         {{ partial "title" . }}
         {{ .Content }}
-        <form action="https://formspree.io/f/moqrzlqg" method="POST" id="js-contactForm">
+        <form action="https://formspree.io/f/moqrzlqg" method="POST" id="js-contactForm" class="needs-validation"
+          novalidate>
           <div class="form-floating mb-3">
             <input type="text" name="name" class="form-control" id="inputName" placeholder="Name"
-              aria-labelledby="inputNameLabel">
+              aria-labelledby="inputNameLabel" required>
             <label for="inputName" id="inputNameLabel">Name</label>
           </div>
           <div class="form-floating mb-3">
             <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email"
-              aria-labelledby="inputEmailLabel">
+              aria-labelledby="inputEmailLabel" required>
             <label for="inputEmail" id="inputEmailLabel">Email</label>
           </div>
           <div class="form-floating mb-3">
             <input type="text" name="subject" class="form-control" id="inputSubject" placeholder="Subject"
-              aria-labelledby="inputSubjectLabel">
+              aria-labelledby="inputSubjectLabel" required>
             <label for="inputSubject" id="inputSubjectLabel">Subject</label>
           </div>
           <div class="form-floating mb-3">
             <textarea name="message" class="form-control" id="inputMessage" placeholder="Message"
-              aria-labelledby="inputMessageLabel"></textarea>
+              aria-labelledby="inputMessageLabel" required></textarea>
             <label for="inputMessage" id="inputMessageLabel">Message</label>
           </div>
+          <div id='recaptcha' class="g-recaptcha" data-sitekey="6Ld8mZcgAAAAAKAyoT88gNiMhfFMr8d-z3-gNbTH"
+            data-callback="onSubmit" data-size="invisible">
+          </div>
           <input type="text" name="_gotcha" style="display:none" />
-          <button class="g-recaptcha btn btn-outline-primary" data-sitekey="6Ld8mZcgAAAAAKAyoT88gNiMhfFMr8d-z3-gNbTH"
-            data-callback='onSubmit'>Submit</button>
-          <!-- <button type="submit" class="btn btn-outline-primary">Submit</button> -->
+          <!-- <button class="g-recaptcha btn btn-outline-primary" data-sitekey="6Ld8mZcgAAAAAKAyoT88gNiMhfFMr8d-z3-gNbTH"
+            data-callback='onSubmit'>Submit</button> -->
+          <button type="submit" class="btn btn-outline-primary">Submit</button>
         </form>
       </div>
     </div>
@@ -39,8 +43,37 @@
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
+  // called by recaptcha, submits the form (but not via browser default)
   function onSubmit(token) {
     document.getElementById("js-contactForm").submit();
   }
+
+
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function () {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+
+    var form = document.getElementById('js-contactForm');
+
+    // listens for submit event on form
+    form.addEventListener('submit', function (event) {
+      // stop default submit behaviour
+      event.preventDefault()
+      event.stopPropagation()
+      // add class to display validation status of fields
+      form.classList.add('was-validated')
+      // if form has passed validation
+      // stop default submit behaviour
+      if (form.checkValidity()) {
+        // call recaptcha for check and submission
+        grecaptcha.execute();
+        // recaptcha calls onSubmit after check
+      }
+
+    }, false)
+
+  })()
 </script>
 {{ end }}
