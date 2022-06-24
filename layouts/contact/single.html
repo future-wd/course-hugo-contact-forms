@@ -5,7 +5,7 @@
       <div class="col-md-9 col-lg-6">
         {{ partial "title" . }}
         {{ .Content }}
-        <form action="https://formspree.io/f/moqrzlqg" method="POST">
+        <form action="https://formspree.io/f/moqrzlqg" method="POST" id="js-contactForm">
           <div class="form-floating mb-3">
             <input type="text" name="name" class="form-control" id="inputName" placeholder="Name"
               aria-labelledby="inputNameLabel">
@@ -26,10 +26,21 @@
               aria-labelledby="inputMessageLabel"></textarea>
             <label for="inputMessage" id="inputMessageLabel">Message</label>
           </div>
-          <button type="submit" class="btn btn-outline-primary">Submit</button>
+          <input type="text" name="_gotcha" style="display:none" />
+          <button class="g-recaptcha btn btn-outline-primary" data-sitekey="6Ld8mZcgAAAAAKAyoT88gNiMhfFMr8d-z3-gNbTH"
+            data-callback='onSubmit'>Submit</button>
+          <!-- <button type="submit" class="btn btn-outline-primary">Submit</button> -->
         </form>
       </div>
     </div>
   </div>
 </section>
+
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+  function onSubmit(token) {
+    document.getElementById("js-contactForm").submit();
+  }
+</script>
 {{ end }}
