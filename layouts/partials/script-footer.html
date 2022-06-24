@@ -1,1 +1,5 @@
 {{ partial "esbuild" "js/main.js" . }}
+
+{{ if eq .Type "contact" }}
+{{ partial "esbuild" "js/contact.js" . }}
+{{ end }}
