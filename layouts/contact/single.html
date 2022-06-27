@@ -5,7 +5,7 @@
       <div class="col-md-9 col-lg-6">
         {{ partial "title" . }}
         {{ .Content }}
-        <form action="https://usebasin.com/f/ef58b4403de0" method="POST" id="js-contactForm" class="needs-validation"
+        <form action="https://usebasin.com/f/ef58b4403de01" method="POST" id="js-contactForm" class="needs-validation"
           novalidate>
           <div class="form-floating mb-3">
             <input type="text" name="name" class="form-control" id="inputName" placeholder="Name"
@@ -31,9 +31,9 @@
             data-callback="submitForm" data-size="invisible">
           </div>
           <input type="text" name="_gotcha" style="display:none" />
-          <!-- <button class="g-recaptcha btn btn-outline-primary" data-sitekey="6Lew3SMUAAAAAJ82QoS7gqOTkRI_dhYrFy1f7Sqy"
-            data-callback='onSubmit'>Submit</button> -->
-          <button type="submit" class="btn btn-outline-primary">Submit</button>
+          <button class="g-recaptcha btn btn-outline-primary" data-sitekey="6Lew3SMUAAAAAJ82QoS7gqOTkRI_dhYrFy1f7Sqy"
+            data-callback='submitForm'>Submit</button>
+          <!-- <button type="submit" class="btn btn-outline-primary">Submit</button> -->
         </form>
       </div>
     </div>

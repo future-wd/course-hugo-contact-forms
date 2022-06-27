@@ -55,4 +55,4 @@ window.submitForm = () => {
       // recaptcha calls onSubmit after check
     }
   }, false)
-
+}
