@@ -5,9 +5,7 @@
       <div class="col-md-9 col-lg-6">
         {{ partial "title" . }}
         {{ .Content }}
-        <form action="https://usebasin.com/f/ef58b4403de01" method="POST" id="js-contactForm"
-          class="needs-validation"=======<form action="https://usebasin.com/f/ef58b4403de0" method="POST"
-          id="js-contactForm" class="needs-validation">>>>>>> 7-validation
+        <form action="https://usebasin.com/f/ef58b4403de0" method="POST" id="js-contactForm" class="needs-validation"
           novalidate>
           <div class="form-floating mb-3">
             <input type="text" name="name" class="form-control" id="inputName" placeholder="Name"
@@ -38,10 +36,6 @@
     </div>
   </div>
 </section>
-function onSubmit(token) {
-document.getElementById("js-contactForm").submit();
-}
-</script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 {{ end }}
