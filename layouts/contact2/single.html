@@ -5,7 +5,7 @@
       <div class="col-md-9 col-lg-6">
         {{ partial "title" . }}
         {{ .Content }}
-        <form action="https://usebasin.com/f/ef58b4403de0" method="POST" id="js-contactForm" class="needs-validation"
+        <form action="https://usebasin.com/f/ef58b4403de01" method="POST" id="my-contact-form" class="needs-validation"
           novalidate>
           <div class="form-floating mb-3">
             <input type="text" name="name" class="form-control" id="inputName" placeholder="Name"
@@ -30,6 +30,7 @@
           <div id='recaptcha' class="g-recaptcha" data-sitekey="6Lew3SMUAAAAAJ82QoS7gqOTkRI_dhYrFy1f7Sqy"
             data-callback="submitForm" data-size="invisible">
           </div>
+          <div id="form-message"></div>
           <input type="text" name="_gotcha" style="display:none" />
           <!-- <button class="g-recaptcha btn btn-outline-primary" data-sitekey="6Lew3SMUAAAAAJ82QoS7gqOTkRI_dhYrFy1f7Sqy"
             data-callback='onSubmit'>Submit</button> -->
@@ -39,7 +40,25 @@
     </div>
   </div>
 </section>
-
+<script type="text/javascript">
+  var form = document.getElementById("my-contact-form");
+  var formMessage = document.getElementById("form-message");
+  form.onsubmit = function (event) {
+    event.preventDefault();
+    var formData = new FormData(form);
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", form.action, true);
+    xhr.send(formData);
+    xhr.onload = function (e) {
+      if (xhr.status === 200) {
+        formMessage.innerHTML = "Success";
+      } else {
+        var response = JSON.parse(xhr.response);
+        formMessage.innerHTML = "Error: " + response.error;
+      }
+    };
+  };
+</script>
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 

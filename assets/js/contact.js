@@ -12,7 +12,7 @@ window.submitForm = () => {
   // 1. open and configure xhr
   xhr.open(form.method, form.action)
   // 2. set headers
-  xhr.setRequestHeader('Accept', 'application/json');
+  xhr.setRequestHeader('accept', 'application/json');
   // 3. send data
   xhr.send(formData);
   // 4. set timeout to 8sec
@@ -21,32 +21,38 @@ window.submitForm = () => {
   xhr.ontimeout = () => {
     console.error('timeout');
   }
+
   // 6. on finish load
+  // xhr.onloadend = () => {
+  //   if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+  //     // http success
+  //   } else {
+  //     // http error
+  //   }
+  // }
   xhr.onloadend = () => {
-    // http success
-    if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
-      console.log('http success');
-      // check json response
-      // const jsonResponse = xhr.response
-      // console.log(jsonResponse);
-    } else { // http fail
-      console.error('http fail');
+    const response = JSON.parse(xhr.response);
+
+    if (response.success) {
+      console.log('json success');
+    } else if (response.error) {
+      console.log(`json error: ${response.error}`);
+    } else {
+      console.log('generic error');
     }
   }
 
-}
-
-form.addEventListener('submit', (event) => {
-  // stop default submit behaviour
-  event.preventDefault()
-  event.stopPropagation()
-  // add class to display validation status of fields
-  form.classList.add('was-validated')
-  // if form has passed validation
-  if (form.checkValidity()) {
-    // call recaptcha for check and submission
-    grecaptcha.execute();
-    // recaptcha calls onSubmit after check
-  }
-}, false)
+  form.addEventListener('submit', (event) => {
+    // stop default submit behaviour
+    event.preventDefault()
+    event.stopPropagation()
+    // add class to display validation status of fields
+    form.classList.add('was-validated')
+    // if form has passed validation
+    if (form.checkValidity()) {
+      // call recaptcha for check and submission
+      grecaptcha.execute();
+      // recaptcha calls onSubmit after check
+    }
+  }, false)
 
