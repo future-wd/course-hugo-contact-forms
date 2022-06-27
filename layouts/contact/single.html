@@ -5,7 +5,9 @@
       <div class="col-md-9 col-lg-6">
         {{ partial "title" . }}
         {{ .Content }}
-        <form action="https://usebasin.com/f/ef58b4403de01" method="POST" id="js-contactForm" class="needs-validation"
+        <<<<<<< HEAD <form action="https://usebasin.com/f/ef58b4403de01" method="POST" id="js-contactForm"
+          class="needs-validation"=======<form action="https://usebasin.com/f/ef58b4403de0" method="POST"
+          id="js-contactForm" class="needs-validation">>>>>>> 7-validation
           novalidate>
           <div class="form-floating mb-3">
             <input type="text" name="name" class="form-control" id="inputName" placeholder="Name"
@@ -27,20 +29,19 @@
               aria-labelledby="inputMessageLabel" required></textarea>
             <label for="inputMessage" id="inputMessageLabel">Message</label>
           </div>
-          <div id='recaptcha' class="g-recaptcha" data-sitekey="6Lew3SMUAAAAAJ82QoS7gqOTkRI_dhYrFy1f7Sqy"
-            data-callback="submitForm" data-size="invisible">
-          </div>
-          <input type="text" name="_gotcha" style="display:none" />
-          <button class="g-recaptcha btn btn-outline-primary" data-sitekey="6Lew3SMUAAAAAJ82QoS7gqOTkRI_dhYrFy1f7Sqy"
-            data-callback='submitForm'>Submit</button>
+          <input type="hidden" name="_gotcha">
           <!-- <button type="submit" class="btn btn-outline-primary">Submit</button> -->
-        </form>
+          <button class="g-recaptcha btn btn-outline-primary" data-sitekey="6Lew3SMUAAAAAJ82QoS7gqOTkRI_dhYrFy1f7Sqy"
+            data-callback='onSubmit'>Submit</button>
+          </form>
       </div>
     </div>
   </div>
 </section>
-
-
+function onSubmit(token) {
+document.getElementById("js-contactForm").submit();
+}
+</script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 {{ end }}
