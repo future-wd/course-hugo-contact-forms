@@ -27,8 +27,8 @@ window.submitForm = () => {
     if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
       console.log('http success');
       // check json response
-      const jsonResponse = xhr.response
-      console.log(jsonResponse);
+      // const jsonResponse = xhr.response
+      // console.log(jsonResponse);
     } else { // http fail
       console.error('http fail');
     }
