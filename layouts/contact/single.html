@@ -29,8 +29,10 @@
           </div>
           <input type="hidden" name="_gotcha">
           <!-- <button type="submit" class="btn btn-outline-primary">Submit</button> -->
-          <button class="g-recaptcha btn btn-outline-primary" data-sitekey="6Lew3SMUAAAAAJ82QoS7gqOTkRI_dhYrFy1f7Sqy"
-            data-callback='onSubmit'>Submit</button>
+          <button class="g-recaptcha btn btn-outline-primary mb-2"
+            data-sitekey="6Lew3SMUAAAAAJ82QoS7gqOTkRI_dhYrFy1f7Sqy" data-callback='submitForm' id="js-submit"
+            disabled>Submit</button>
+          <noscript>You must have javascript enabled to submit this form</noscript>
         </form>
       </div>
     </div>
